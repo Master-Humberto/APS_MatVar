@@ -1,0 +1,140 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tcolorbox}
+\usepackage{bigints}
+\usepackage{MnSymbol,wasysym}
+\usepackage{mathtools}
+\usepackage{nccmath}
+\usepackage{amsmath}
+\usepackage{nccmath}
+\usepackage{empheq} 
+\title{APS de MatVar}
+\author{Humberto Filho, João Palma, Pedro Garcia}
+\date{Novembro de 2022}
+
+\begin{document}
+
+\maketitle
+
+\section{Integração por partes}
+
+Vamos começar com algo que sabemos, que é a derivada de um produto.
+\paragraph{}
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Fórmula da Derivada do Produto]
+$$ \frac{\mathrm{d}}{\mathrm{d}x}[f(x) \cdot g(x) ]= [ \frac{\mathtrm{d}}{\mathrm{d}x} f(x)] \cdot g(x) + f(x) \cdot [ \frac{\mathrm{d}}{\mathrm{d}x} g(x)]$$
+\end{tcolorbox}
+
+Se integrarmos de ambos os lados, temos : 
+$f(x) \cdot g(x) = \int \frac{\mathtrm{d}}{\mathrm{d}x} f(x) \cdot g(x) dx + \int f(x) \cdot  \frac{\mathrm{d}}{\mathrm{d}x} g(x) dx$.
+
+que nos dá a magnífica fórmula da integração por partes:
+
+\begin{tcolorbox}[colback=red!5!white,colframe=red!75!black,title=Fórmula de integração por partes]
+
+$$\int f(x) \cdot \frac{\mathtrm{d}}{\mathrm{d}x} g(x) dx = f(x) \cdot g(x) - \int \frac{\mathtrm{d}}{\mathrm{d}x} f(x) \cdot g(x) dx $$
+
+\end{tcolorbox}
+
+Agora vamos para alguns exemplos para entendermos da fórmula.
+\vskip 0.2 cm
+{\bf Exemplo 1}
+\vskip 0.2 cm
+
+$$\int x \cdot cos(x) dx$$ 
+\\
+Vamos colocar cos(x) como g(x).Temos que sua integral é dada por sen(x). Assim, temos que : 
+\\
+$\int x \cdot cos(x) dx$ = $x \cdot sen(x) - \int 1 \cdot sen(x) dx$ ,
+\\
+o que nos dá, resolvendo a integral : 
+\\
+$\int x \cdot cos(x) dx = x \cdot sen(x) - [-cos(x)] $
+\\
+$\int x \cdot cos(x) dx = x \cdot sen(x) + cos(x) + C $
+\\
+\newpage 
+\vskip 0.3cm
+{\bf Exemplo 2} 
+\vskip 0.2cm
+\\
+$$\cdot \int x^2 \cdot e^x dx$$
+\\
+Fazendo g(x) como $e^x,$ temos que $G(x) =  e^x$, e sendo f(x) = $x^2$, ficamos com: 
+
+$\int x^2 \cdot e^x dx = x^2 \cdot e^x - \int 2x \cdot e^x dx $ 
+
+Agora, vamos resolver : $\int 2x \cdot e^x dx$ .
+
+Faremos integração por partes nessa integral agora : 
+\\
+$\int 2x \cdot e^x dx = 2x \cdot e^x - \int 2\cdot e^x dx $
+\\
+$\int 2x \cdot e^x dx = 2x \cdot e^x - 2\cdot e^x$
+Juntando isso, ficamos com:
+\\
+$\int x^2 \cdot e^x dx = x^2 \cdot e^x - 2x \cdot e^x + 2 \cdot e^x + C$
+\\
+E esse é o método da iintegração por partes. \smiley{}
+
+\section{Frações Parciais} 
+
+Na álgebra, a decomposição em frações parciais ou expansão em frações parciais é um algoritmo no qual você pode expandir uma razão de polinômios com coeficientes inteiros em um polinômio de coeficientes inteiros somado a outras razões de polinômios com coeficientes inteiros.
+
+\begin{tcolorbox}[colback=blue!5!white,colframe=blue!75!black,title=Simbologia das frações parciais]
+$$
+{\displaystyle {\frac {f(x)}{g(x)}}=p(x)+\sum _{j}{\frac {f_{j}(x)}{g_{j}(x)}}}
+$$
+Em que p(x) é um polinômio tal que cada $g_{j}(x)$ é um potência de um polinômio irredutível e o termo $f_{j}(x)$ é um polinômio de grau menor do que o denominador.
+\end{tcolorbox}
+Para isso, pega-se a razão entre os polinômios e faz o seguinte procedimento:
+\vskip
+$\cdot$     Calculam-se as raízes do polinômio do denominador.
+\vskip
+
+$\cdot$ Coloca a razão de polinômios original como a soma de razões de polinômios com os denominadores sendo da forma $(x-r)$ sendo r uma raíz do polinômio e repete-se como a soma de mais uma fração só que elevada à quantidade de vezes que ela aparece e o numerador como um polinômio de grau menor que o denominador (por exemplo, se temos uma fração parcial como $\frac{3}{(x^2-2x+1)(x-2)}$, você coloca $\frac{3}{(x^2-2x+1)(x-2)}$ = $\frac{A}{(x-1)}$ + $\frac{B}{(x-1)^2)} + \frac{C}{(x-2)}$ ).
+\vskip
+$\cdot$ Você multiplica os termos de baixo em cruz e compara os coeficientes do numerador do termo de cima como os do termo de baixo como se estivesse comparando uma igualdade polinomial. 
+\vskip
+$\cdot$ Você calcula o "A,B,C,..." a partir de um sistema de equações e finaliza a decomposição em frações parciais.
+
+Você deve estar com essa carinha após ler isso : \frownie{} , mas, com alguns exemplos, tudo irá se esclarecer \smiley{}.
+
+\vskip 0.3 cm
+{\bf Exemplo 3}
+\vskip 0.2 cm
+
+$${\displaystyle f(x)={\frac {1}{x^{2}+2x-3}}}$$
+
+Vamos começar descobrindo as raízes desse polinômio. Por soma e produto ou Bhaskara (cálculo omitido), o polinômio do denominador fica igual a : $x^2 + 2x - 3 = (x+3)(x-1)$. Assim , podemos separar o polinômio do exemplo como : $$\frac{1}{x^2 + 2x - 3} = \frac{A}{x+3} + \frac{B}{x-1}$$ 
+Multiplicando os termos, ficamos com : $$\frac{1}{x^2 + 2x - 3} =  \frac{A(x-1)}{(x+3)(x-1)} + \frac{B(x+3)}{(x+3)(x-1)} \iff \frac{Ax - A}{(x-1)(x+3)} + \frac{Bx + 3B}{(x-1)(x+3)}$$, só que o termo de baixo é igual ao polinômio do denominador, então, você tem que : $$\frac{(Ax-A) + (Bx + 3B)}{x^2 + 2x - 3} = \frac{1}{x^2 + 2x - 3}$$. Só que os termos dos denominadores são iguais, então, você pode "cortar", ficando com : 
+$$Ax - A + Bx + 3B = 1 \iff Ax - A + Bx + 3B = 1 + 0\cdot x $$ 
+\begin{equation}
+\begin{cases}
+A + B = 0 \\
+-A + 3B = 1 
+\end{cases}
+\end{equation}
+Somando ambas as equações, ficamos com : $4B = 1 \rightarrow{} B = \frac{1}{4}$. Substituindo na primeira equação, imediatamente conseguimos que $A = -\frac{1}{4}$. Assim, conseguimos que : 
+$$\frac{1}{x^2 + 2x - 3} = \frac{-1/4}{x+3} + \frac{1/4}{x-1}, $$ resolvendo a fração parcial \smiley{}
+
+\vskip 0.3 cm
+{\bf Exemplo 4}
+\vskip 0.2 cm
+$$f(x) = \frac{3x + 5}{(1-2x)^2}$$
+Fazendoo cálculo das raízes(ou se lembrando do famoso trinômio quadrado perfeito $(a+b)^2$), ficamos com : $x^2 - 2x + 1$ = $(x-1)(x-1)$. Separando em frações parciais com numeradores indefinidos, ficamos com : 
+$$\frac{3x+5}{x^2-2x+1} = \frac{A}{(x-1)^2} + \frac{B}{(x-1)}$$. Multiplicando os termos, ficamos com : 
+$$\frac{3x+5}{(x-1)^2} = \frac{A}{(x-1)^2} + \frac{B(x-1)}{(x-1)^2}$$
+Ajeitando, isso se torna:
+$$\frac{3x+5}{(x-1)^2} = \frac{A + Bx - B}{(x-1)^2}$$
+Agora, fazendo o sistema de equações, temos : 
+\begin{equation}
+\begin{cases}
+A - B = 5 \\ 
+B = 3 
+\end{cases}
+\end{equation}
+O que nos dá, imediatamente, que $B = 3$ e, adicionando na primeira equação, que $A=8$. Ficando com : 
+$$\frac{3x+5}{(x-1)^2} = \frac{8}{(x-1)^2} + \frac{3}{(x-1)}$$. Assim, terminamos o exemplo, e a apresentação, muito obrigado! \smiley{} \blacksquare
+
+
+\end{document}
